@@ -7,6 +7,15 @@
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
   --spacing-3xl: 6rem;
+
+  /* Font size variables */
+  --font-size-sm: 1rem;
+  --font-size-base: 1.1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3rem;
 }
 
 * {
@@ -29,17 +38,251 @@ html {
   html {
     font-size: 14px;
   }
+  
+  .reasons-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
   html {
-    font-size: 13px;
+    font-size: 14px;
+  }
+
+  .hero-container {
+    min-height: 100vh;
+    height: auto;
+    padding: var(--spacing-lg) 0;
+  }
+
+  .offer-text {
+    font-size: var(--font-size-3xl);
+    margin: var(--spacing-lg) 0;
+    text-align: center;
+  }
+
+  .services-overview {
+    width: 90%;
+    margin: var(--spacing-xl) auto;
+    padding: var(--spacing-lg);
+  }
+
+  .services-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .service-item p {
+    font-size: var(--font-size-base);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .testimonial-card {
+    padding: var(--spacing-lg);
+  }
+
+  .quote {
+    font-size: var(--font-size-lg);
+  }
+
+  .author-info h4 {
+    font-size: var(--font-size-base);
+  }
+
+  .why-resume-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .why-resume-title .serif {
+    font-size: var(--font-size-3xl);
+  }
+
+  .steps-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .step-card {
+    padding: var(--spacing-lg);
+  }
+
+  .step-card img {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .step-card h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  .step-card p {
+    font-size: var(--font-size-base);
+  }
+
+  .mistakes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mistake-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .mistake-description {
+    font-size: var(--font-size-base);
   }
 }
 
 @media (max-width: 576px) {
   html {
+    font-size: 13px;
+  }
+
+  .hero-container {
+    padding: var(--spacing-md) 0;
+  }
+
+  .offer-text {
+    font-size: var(--font-size-2xl);
+  }
+
+  .services-overview {
+    width: 95%;
+    padding: var(--spacing-md);
+    display: block;
+  }
+
+  .services-overview h4 {
+    font-size: var(--font-size-lg);
+    padding: 0.3rem 2rem;
+  }
+
+  .services-container {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-button {
+    font-size: var(--font-size-lg);
+    padding: 0.8rem 1.6rem;
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .testimonial-card {
+    padding: var(--spacing-md);
+  }
+
+  .quote {
+    font-size: var(--font-size-base);
+  }
+
+  .author-info h4 {
+    font-size: var(--font-size-base);
+  }
+
+  .why-resume-title {
+    font-size: var(--font-size-xl);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .why-resume-title .serif {
+    font-size: var(--font-size-2xl);
+  }
+
+  .reasons-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .reason-card {
+    padding: var(--spacing-md);
+  }
+
+  .reason-card h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  .steps-container {
+    grid-template-columns: 1fr;
+  }
+
+  .step-card img {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .step-card h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  .step-card p {
+    font-size: var(--font-size-base);
+  }
+
+  .mistake-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .mistake-description {
+    font-size: var(--font-size-base);
+  }
+
+  .faq-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .faq-question {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-md);
+  }
+
+  .faq-answer {
+    font-size: var(--font-size-base);
+  }
+
+  .footer-logo img {
+    height: 5rem;
+  }
+
+  .social-links {
+    gap: var(--spacing-md);
+  }
+
+  .social-links a {
+    font-size: var(--font-size-xl);
+  }
+
+  .copyright {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 375px) {
+  html {
     font-size: 12px;
+  }
+
+  .hero-container {
+    padding: var(--spacing-sm) 0;
+  }
+
+  .offer-text {
+    font-size: var(--font-size-xl);
+  }
+
+  .services-overview {
+    width: 100%;
+    padding: var(--spacing-sm);
+  }
+
+  .cta-button {
+    font-size: var(--font-size-base);
+    padding: 0.7rem 1.4rem;
   }
 }
 
@@ -106,7 +349,7 @@ button {
   gap: var(--spacing-lg);
   position: relative;
   z-index: 2;
-  padding: var(--spacing-lg);
+  /* padding: var(--spacing-lg); */
 }
 
 .left-container {
@@ -1061,9 +1304,7 @@ button {
     position: relative;
     z-index: 3;
   }
-}
-
-@media (max-width: 576px) {
+  
   .offer-text {
     font-size: 7rem;
   }
