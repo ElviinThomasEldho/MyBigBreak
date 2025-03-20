@@ -38,7 +38,7 @@ html {
   html {
     font-size: 14px;
   }
-  
+
   .reasons-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1338,7 +1338,7 @@ button {
   }
 
   .why-resume-container .serif {
-    font-size: 5rem;
+    font-size: 4rem;
     line-height: 1;
   }
 
@@ -1353,22 +1353,23 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     gap: var(--spacing-lg);
     text-align: center;
     padding: 0;
   }
 
   .reason-card .serif {
-    min-width: 3.75rem;
+    min-width: 3.5rem;
     margin-bottom: var(--spacing-md);
     font-size: 5rem;
   }
 
   .reason-card h3 {
-    font-size: 2.4rem;
+    font-size: 2rem;
     text-align: left;
     line-height: 1.2;
+    font-weight: normal;
   }
 
   .common-mistakes-container {
@@ -1376,17 +1377,17 @@ button {
   }
 
   .common-mistakes-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     line-height: 1;
   }
 
   .mistake-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.2;
   }
 
   .mistake-description {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     line-height: 1.2;
   }
 
@@ -1404,14 +1405,14 @@ button {
   }
 
   .title-container p {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 1.2;
     text-align: center;
     max-width: 100%;
   }
 
   .how-it-works-title {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .steps-container {
@@ -1425,11 +1426,11 @@ button {
   }
 
   .step-card h3 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .step-card p {
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.2;
   }
 
@@ -1441,7 +1442,6 @@ button {
     font-size: 3.5rem;
     line-height: 1;
   }
-
 
   .testimonial-card {
     padding: var(--spacing-xl);
@@ -1475,12 +1475,10 @@ button {
     font-size: 1.2rem;
   }
 
-
   .faq-container {
     width: 100vw;
     margin: 0;
   }
-  
 
   .faq-title {
     font-size: 3rem;
@@ -1488,22 +1486,26 @@ button {
   }
 
   .faq-item {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .faq-question {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .faq-answer {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 1.2;
   }
 
   .faq-answer.open {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 1.2;
     margin-top: var(--spacing-lg);
+  }
+
+  .footer-container {
+    width: 100vw;
   }
 
   .footer-content {
@@ -1522,7 +1524,4 @@ button {
   .footer-content .copyright {
     font-size: 2rem;
   }
-  
-  
-  
 }
