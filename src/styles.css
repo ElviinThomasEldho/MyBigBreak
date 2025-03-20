@@ -1308,9 +1308,11 @@ button {
   }
 
   .services-overview {
-    display: none;
+    /* display: none; */
+    position: relative;
+    margin: 0;
     padding: var(--spacing-lg);
-    width: 100%;
+    width: 100vw;
   }
 
   .services-overview h4 {
@@ -1318,49 +1320,78 @@ button {
     font-size: 1.1rem;
   }
 
+  .services-container {
+    gap: 0;
+  }
+
+  .services-container .service-item {
+    padding: 0;
+  }
+
+  .why-resume-container {
+    width: 100vw;
+  }
+
   .why-resume-title {
-    font-size: 5rem;
+    font-size: 2rem;
     text-transform: uppercase;
   }
 
   .why-resume-container .serif {
-    font-size: 6rem;
+    font-size: 5rem;
+    line-height: 1;
   }
 
   .reasons-grid {
     gap: 0px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
   }
 
   .reason-card {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: start;
-    gap: var(--spacing-xl);
+    justify-content: center;
+    gap: var(--spacing-lg);
     text-align: center;
+    padding: 0;
   }
 
-  .reason-card .icon {
-    width: 3.75rem;
-    height: 3.75rem;
+  .reason-card .serif {
+    min-width: 3.75rem;
     margin-bottom: var(--spacing-md);
-    font-size: 2.5rem;
+    font-size: 5rem;
   }
 
   .reason-card h3 {
-    font-size: 3rem;
+    font-size: 2.4rem;
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  .common-mistakes-container {
+    width: 100vw;
   }
 
   .common-mistakes-title {
-    font-size: 4rem;
+    font-size: 3.5rem;
+    line-height: 1;
   }
 
   .mistake-title {
-    font-size: 2.8rem;
+    font-size: 2rem;
+    line-height: 1.2;
   }
 
   .mistake-description {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .how-it-works-container {
+    width: 100vw;
   }
 
   .title-container {
@@ -1373,32 +1404,42 @@ button {
   }
 
   .title-container p {
-    font-size: 3.2rem;
+    font-size: 2rem;
     line-height: 1.2;
     text-align: center;
-    max-width: 80%;
+    max-width: 100%;
   }
 
   .how-it-works-title {
-    font-size: 7rem;
+    font-size: 4rem;
+  }
+
+  .steps-container {
+    padding: 0;
+    width: 100%;
   }
 
   .step-card img {
-    width: 30rem;
-    height: 30rem;
+    width: 20rem;
+    height: 20rem;
   }
 
   .step-card h3 {
-    font-size: 5.5rem;
+    font-size: 3rem;
   }
 
   .step-card p {
-    font-size: 3.5rem;
+    font-size: 2rem;
     line-height: 1.2;
   }
 
+  .section-container {
+    width: 100vw;
+  }
+
   .section-title {
-    font-size: 4rem;
+    font-size: 3.5rem;
+    line-height: 1;
   }
 
 
@@ -1406,43 +1447,63 @@ button {
     padding: var(--spacing-xl);
   }
 
+  .testimonials-carousel {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .testimonial-card {
+    padding: 20px;
+  }
   .testimonial-card .quote {
-    font-size: 3.5rem;
+    font-size: 2rem;
+    line-height: 1.3;
   }
 
   .testimonial-card .avatar {
-    width: 6rem;
-    height: 6rem;
-    font-size: 3rem;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
   }
 
   .testimonial-card .author-info h4 {
-    font-size: 3rem;
+    font-size: 1.5rem;
   }
 
   .testimonial-card .author-info p {
-    font-size: 2rem;
+    font-size: 1.2rem;
+  }
+
+
+  .faq-container {
+    width: 100vw;
+    margin: 0;
   }
   
 
   .faq-title {
-    font-size: 4rem;
+    font-size: 3rem;
+    line-height: 1.2;
   }
 
   .faq-item {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .faq-question {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .faq-answer {
-    font-size: 3rem;
+    font-size: 2rem;
+    line-height: 1.2;
   }
 
   .faq-answer.open {
-    font-size: 3rem;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-top: var(--spacing-lg);
   }
 
   .footer-content {
@@ -1455,11 +1516,11 @@ button {
 
   .social-links {
     flex-direction: row;
-    font-size: 3rem;
+    font-size: 1.5rem;
   }
 
   .footer-content .copyright {
-    font-size: 4rem;
+    font-size: 2rem;
   }
   
   
