@@ -1,4 +1,5 @@
 import React from "react";
+import { useModal } from "../../context/ModalContext.jsx";
 import "../../styles.css";
 
 const reasons = [
@@ -20,6 +21,8 @@ const reasons = [
 ];
 
 const WhyResumeSection = () => {
+  const { openModal } = useModal();
+
   return (
     <section className="why-resume-container">
       <h2 className="why-resume-title">
@@ -39,7 +42,9 @@ const WhyResumeSection = () => {
         ))}
       </div>
       <div className="cta-container">
-        <button className="cta-button">UPGRADE YOUR RESUME TODAY!</button>
+        <button className="cta-button" onClick={openModal}>
+          UPGRADE YOUR RESUME TODAY!
+        </button>
       </div>
     </section>
   );

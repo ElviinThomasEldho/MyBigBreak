@@ -1,4 +1,5 @@
 import React from "react";
+import { useModal } from "../../context/ModalContext.jsx";
 import "../../styles.css";
 
 const services = [
@@ -17,6 +18,8 @@ const services = [
 ];
 
 const HeroSection = () => {
+  const { openModal } = useModal();
+
   return (
     <>
       <div className="hero-container">
@@ -32,7 +35,9 @@ const HeroSection = () => {
               <br />
               <span className="serif">Professional Resume Writing</span>
             </h1>
-            <button className="cta-button">GET STARTED NOW</button>
+            <button className="cta-button" onClick={openModal}>
+              GET STARTED NOW
+            </button>
           </div>
           <div className="right-container">
             <img
