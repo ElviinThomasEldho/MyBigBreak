@@ -3,6 +3,7 @@ import { Link } from 'react-scroll';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,13 +25,26 @@ const Navbar = () => {
     { name: 'FAQ', to: 'faq' },
   ];
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="navbar-logo">
           <img src="/src/img/logo_full_color.png" alt="MyBigBreak Logo" className="logo-image" />
         </div>
-        <div className="navbar-links">
+        <button className="burger-menu" onClick={toggleMenu} aria-label="Toggle menu">
+          <span className={`burger-line ${isMenuOpen ? 'open' : ''}`}></span>
+          <span className={`burger-line ${isMenuOpen ? 'open' : ''}`}></span>
+          <span className={`burger-line ${isMenuOpen ? 'open' : ''}`}></span>
+        </button>
+        <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -40,6 +54,7 @@ const Navbar = () => {
               offset={-80}
               duration={500}
               className="nav-link"
+              onClick={closeMenu}
             >
               {link.name}
             </Link>
