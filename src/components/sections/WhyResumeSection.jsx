@@ -13,7 +13,7 @@ const reasons = [
     title: "Win More INTERVIEWS",
   },
   {
-    title: "Make a Lasting FIRST IMPRESSION",
+    title: "Make a Lasting First IMPRESSION",
   },
   {
     title: "Maximize Your OPPORTUNITIES",
