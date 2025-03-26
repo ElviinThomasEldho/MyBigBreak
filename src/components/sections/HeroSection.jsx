@@ -5,15 +5,18 @@ import "../../styles.css";
 const services = [
   {
     img: "/src/img/service1.svg",
-    name: "Resume",
+    name: "Resume Enhancement",
+    desc: "We optimize your resume by highlighting key skills, achievements, and industry-relevant keywords to improve visibility and impact.",
   },
   {
     img: "/src/img/service2.svg",
-    name: "Job Profile",
+    name: "Job Portal Optimization",
+    desc: "We update your profile and resume on your chosen job site, ensuring better visibility and higher ranking in recruiter searches.",
   },
   {
     img: "/src/img/service3.svg",
-    name: "LinkedIn Profile",
+    name: "LinkedIn Optimization",
+    desc: "We refine your LinkedIn profile with strategic keywords and detailed professional experience to boost your chances of getting noticed.",
   },
 ];
 
@@ -58,7 +61,8 @@ const HeroSection = () => {
                 src={service.img}
                 alt={service.name}
               />
-              <p>{service.name}</p>
+              <p className="service-name">{service.name}</p>
+              <p className="service-desc">{service.desc}</p>
             </div>
           ))}
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import HeroSection from './sections/HeroSection';
 import WhyResumeSection from './sections/WhyResumeSection';
-import CommonMistakesSection from './sections/CommonMistakesSection';
+import ResumeTipsSection from './sections/ResumeTipsSection';
 import HowItWorksSection from './sections/HowItWorksSection';
 import TestimonialsSection from './sections/TestimonialsSection';
 import FaqSection from './sections/FaqSection';
@@ -26,8 +26,8 @@ const LandingPage = () => {
         <section id="how-it-works">
           <HowItWorksSection />
         </section>
-        <section id="common-mistakes">
-          <CommonMistakesSection />
+        <section id="resume-tips">
+          <ResumeTipsSection />
         </section>
         <section id="testimonials">
           <TestimonialsSection />

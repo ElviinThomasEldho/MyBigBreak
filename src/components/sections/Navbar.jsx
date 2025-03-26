@@ -20,7 +20,7 @@ const Navbar = () => {
     // { name: 'Services', to: 'services' },
     { name: 'Why Resume', to: 'why-resume' },
     { name: 'How It Works', to: 'how-it-works' },
-    { name: 'Common Mistakes', to: 'common-mistakes' },
+    { name: 'Tips', to: 'resume-tips' },
     { name: 'Testimonials', to: 'testimonials' },
     { name: 'FAQ', to: 'faq' },
   ];
