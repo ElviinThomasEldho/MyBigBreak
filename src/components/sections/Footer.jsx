@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="footer-content">
         <div className="footer-logo">
-          <img src="/src/img/logo_full_white.png" alt="MyBigBreak.in" />
+          <img src="/src/img/logo_full_color.png" alt="MyBigBreak.in" />
         </div>
         <div className="social-links">
           Follow Us On

@@ -28,11 +28,11 @@ const HeroSection = () => {
       <div className="hero-container">
         <div className="hero-content">
           <div className="left-container">
-            <img
+            {/* <img
               src="/src/img/logo_full_color.png"
               className="logo-image"
               alt="logo-image"
-            />
+            /> */}
             <h1 className="offer-text">
               UPTO <span className="discount-text">40% OFF</span> ON
               <br />

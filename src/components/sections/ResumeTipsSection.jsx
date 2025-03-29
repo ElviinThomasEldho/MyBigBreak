@@ -44,13 +44,7 @@ const ResumeTipsSection = () => {
 
   return (
     <section className="resume-tips-container">
-      <h2 className="resume-tips-title">
-        Essential Resume Tips for Success
-        <button className="cta-button" onClick={openModal}>
-          {" "}
-          Improve your Resume Now!
-        </button>
-      </h2>
+      <h2 className="resume-tips-title">Essential Resume Tips for Success</h2>
 
       <div className="tips-grid">
         {resumeTips.map((tip, index) => (
@@ -67,6 +61,10 @@ const ResumeTipsSection = () => {
           </div>
         ))}
       </div>
+      <button className="cta-button" onClick={openModal}>
+        {" "}
+        Improve your Resume Now!
+      </button>
     </section>
   );
 };
