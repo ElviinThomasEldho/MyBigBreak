@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles.css";
+import { useModal } from "../../context/ModalContext";
 
 const steps = [
   {
@@ -25,6 +26,7 @@ const steps = [
 ];
 
 const HowItWorksSection = () => {
+  const { openModal } = useModal();
   return (
     <section className="how-it-works-container">
       <div className="title-container">
@@ -43,6 +45,12 @@ const HowItWorksSection = () => {
           </div>
         ))}
       </div>
+      <button className="cta-button-light" onClick={openModal}>
+        {" "}
+        Improve your Resume Now!
+        <p className="offer-subtext">Get UPTO 40% OFF on your New Resume</p>
+      </button>
+
     </section>
   );
 };

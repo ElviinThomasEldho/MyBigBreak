@@ -64,6 +64,7 @@ const ResumeTipsSection = () => {
       <button className="cta-button" onClick={openModal}>
         {" "}
         Improve your Resume Now!
+      <p className="offer-subtext">Get UPTO 40% OFF on your New Resume</p>
       </button>
     </section>
   );

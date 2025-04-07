@@ -467,6 +467,81 @@ button {
     transform: translateX(100%) rotate(45deg);
   }
 }
+.cta-button-light {
+  background: linear-gradient(45deg, #d9d9d9, #c0c0c0, #e6e6e6); /* silver shades */
+  color: #333;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: var(--spacing-lg) 0;
+  box-shadow: 0 4px 15px rgba(160, 160, 160, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: pulse-light 2s infinite;
+}
+
+@keyframes pulse-light {
+  0% {
+    box-shadow: 0 4px 15px rgba(160, 160, 160, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(160, 160, 160, 0.4);
+  }
+  100% {
+    box-shadow: 0 4px 15px rgba(160, 160, 160, 0.2);
+  }
+}
+
+.cta-button-light::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease-out, height 0.6s ease-out;
+}
+
+.cta-button-light:hover {
+  background: linear-gradient(45deg, #c9c9c9, #b0b0b0, #d6d6d6);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(160, 160, 160, 0.3);
+}
+
+.cta-button-light:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+.cta-button-light:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 10px rgba(160, 160, 160, 0.2);
+}
+
+.cta-button-light::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+
 
 .services-overview {
   position: absolute;
@@ -595,6 +670,7 @@ button {
   max-width: 1200px;
   margin: 0 auto;
   /* padding: 0 var(--spacing-lg); */
+  
   position: relative;
   z-index: 2;
   width: 90%;
@@ -607,8 +683,8 @@ button {
 
 .samples-carousel .carousel-item img {
   height: 100%;
-  border-radius: 20px;
-  border: solid 2px #0011338e;
+  border-radius: 10px;
+  /* border: solid 2px #0011338e; */
 }
 
 .carousel-item {
@@ -688,7 +764,7 @@ button {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 1.25rem;
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -1184,8 +1260,9 @@ button {
 }
 
 .step-card p {
-  color: #666;
-  font-size: 0.9rem;
+  color: #000;
+  line-height: 1;
+  font-size: 1.1rem;
   margin: 0;
 }
 
@@ -2118,4 +2195,11 @@ button {
     font-size: 1.5rem;
     z-index: 9999;
   }
+}
+
+.offer-subtext {
+  /* margin-top: 10px; */
+  font-weight: bold;
+  color: black;
+  font-size: medium;
 }

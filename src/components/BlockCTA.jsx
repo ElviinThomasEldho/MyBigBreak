@@ -13,6 +13,7 @@ const BlockCTA = () => {
         </p>
         <button className="block-cta-button" onClick={openModal}>
           Transform your resume now
+          <p className="offer-subtext">Get UPTO 40% OFF on your New Resume</p>
         </button>
       </div>
     </div>
