@@ -9,32 +9,48 @@ import {
   VisibilityRounded,
   TrendingUpRounded,
 } from "@mui/icons-material";
-
-const reasons = [
-  {
-    icon: <RocketLaunchRounded style={{ fontSize: "3.5rem" }} />,
-    title: "Fast-Track YOUR CAREER",
-  },
-  {
-    icon: <NotificationsActiveRounded style={{ fontSize: "3.5rem" }} />,
-    title: "Get NOTICED Instantly",
-  },
-  {
-    icon: <WorkOutline style={{ fontSize: "3.5rem" }} />,
-    title: "Win More INTERVIEWS",
-  },
-  {
-    icon: <VisibilityRounded style={{ fontSize: "3.5rem" }} />,
-    title: "Make a Lasting First IMPRESSION",
-  },
-  {
-    icon: <TrendingUpRounded style={{ fontSize: "3.5rem" }} />,
-    title: "Maximize Your OPPORTUNITIES",
-  },
-];
+import { useTheme, useMediaQuery } from "@mui/material";
 
 const WhyResumeSection = () => {
   const { openModal } = useModal();
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const reasons = [
+    {
+      icon: (
+        <RocketLaunchRounded
+          style={{ fontSize: isMobile ? "2rem" : "3.5rem" }}
+        />
+      ),
+      title: "Fast-Track YOUR CAREER",
+    },
+    {
+      icon: (
+        <NotificationsActiveRounded
+          style={{ fontSize: isMobile ? "2rem" : "3.5rem" }}
+        />
+      ),
+      title: "Get NOTICED Instantly",
+    },
+    {
+      icon: <WorkOutline style={{ fontSize: isMobile ? "2rem" : "3.5rem" }} />,
+      title: "Win More INTERVIEWS",
+    },
+    {
+      icon: (
+        <VisibilityRounded style={{ fontSize: isMobile ? "2rem" : "3.5rem" }} />
+      ),
+      title: "Make a Lasting First IMPRESSION",
+    },
+    {
+      icon: (
+        <TrendingUpRounded style={{ fontSize: isMobile ? "2rem" : "3.5rem" }} />
+      ),
+      title: "Maximize Your OPPORTUNITIES",
+    },
+  ];
 
   return (
     <ModalProvider>
