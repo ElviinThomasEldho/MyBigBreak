@@ -1,5 +1,6 @@
 import React from "react";
 import { useModal } from "../../context/ModalContext.jsx";
+import { motion } from "framer-motion";
 import "../../styles.css";
 
 const services = [
@@ -26,36 +27,63 @@ const HeroSection = () => {
   return (
     <>
       <div className="hero-container">
-        <div className="hero-content">
-          <div className="left-container">
-            {/* <img
-              src="/src/img/logo_full_color.png"
-              className="logo-image"
-              alt="logo-image"
-            /> */}
+        <motion.div
+          className="hero-content"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <motion.div
+            className="left-container"
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
             <h1 className="offer-text">
               UPTO <span className="discount-text">40% OFF</span> ON
               <br />
               <span className="serif">Professional Resume Writing</span>
             </h1>
-            <button className="cta-button" onClick={openModal}>
+            <motion.button
+              className="cta-button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={openModal}
+            >
               GET STARTED NOW
-            </button>
-          </div>
-          <div className="right-container">
+            </motion.button>
+          </motion.div>
+
+          <motion.div
+            className="right-container"
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
             <img
               src="/src/img/resumes.png"
               className="hero-image"
               alt="hero-image"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
+
       <div className="services-overview">
         <h4>Our Services</h4>
         <div className="services-container">
           {services.map((service, index) => (
-            <div key={index} className="service-item">
+            <motion.div
+              key={index}
+              className="service-item"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.5 + index * 0.2,
+                duration: 0.5,
+                ease: "easeOut",
+              }}
+            >
               <img
                 className="service-image"
                 src={service.img}
@@ -63,7 +91,7 @@ const HeroSection = () => {
               />
               <p className="service-name">{service.name}</p>
               <p className="service-desc">{service.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

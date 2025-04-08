@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "../../styles.css";
 
 const leftColumnFaqs = [
@@ -46,7 +47,7 @@ const FaqSection = () => {
   const [openIndexes, setOpenIndexes] = useState(new Set());
 
   const toggleFaq = (id) => {
-    setOpenIndexes(prevIndexes => {
+    setOpenIndexes((prevIndexes) => {
       const newIndexes = new Set(prevIndexes);
       if (newIndexes.has(id)) {
         newIndexes.delete(id);
@@ -61,18 +62,38 @@ const FaqSection = () => {
     <div className="faq-column">
       {faqs.map((faq, index) => {
         const faqId = `${columnId}-${index}`;
+        const isOpen = openIndexes.has(faqId);
+
         return (
-          <div key={faqId} className="faq-item">
+          <motion.div
+            key={faqId}
+            className="faq-item"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            viewport={{ once: true }}
+          >
             <button
-              className={`faq-question ${openIndexes.has(faqId) ? "open" : ""}`}
+              className={`faq-question ${isOpen ? "open" : ""}`}
               onClick={() => toggleFaq(faqId)}
             >
               {faq.question}
             </button>
-            <div className={`faq-answer ${openIndexes.has(faqId) ? "open" : ""}`}>
-              {faq.answer}
-            </div>
-          </div>
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  className="faq-answer open"
+                  key="answer"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {faq.answer}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
         );
       })}
     </div>
@@ -80,10 +101,18 @@ const FaqSection = () => {
 
   return (
     <section className="faq-container">
-      <h2 className="faq-title">Frequently Asked Questions</h2>
+      <motion.h2
+        className="faq-title"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        Frequently Asked Questions
+      </motion.h2>
       <div className="questions-container">
-        {renderFaqColumn(leftColumnFaqs, 'left')}
-        {renderFaqColumn(rightColumnFaqs, 'right')}
+        {renderFaqColumn(leftColumnFaqs, "left")}
+        {renderFaqColumn(rightColumnFaqs, "right")}
       </div>
     </section>
   );

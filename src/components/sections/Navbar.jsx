@@ -19,8 +19,8 @@ const Navbar = () => {
     { name: 'Home', to: 'hero' },
     // { name: 'Services', to: 'services' },
     { name: 'Why Resume', to: 'why-resume' },
-    { name: 'How It Works', to: 'how-it-works' },
     { name: 'Tips', to: 'resume-tips' },
+    { name: 'How It Works', to: 'how-it-works' },
     { name: 'Testimonials', to: 'testimonials' },
     { name: 'FAQ', to: 'faq' },
   ];
