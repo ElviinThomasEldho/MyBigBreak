@@ -101,7 +101,7 @@ const ResumeTipsSection = () => {
               color="text.secondary"
               fontFamily={"DM Sans"}
             >
-              Step {index + 1}
+              {/* Step {index + 1} */}
             </TimelineOppositeContent>
 
             <TimelineSeparator>
