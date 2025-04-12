@@ -35,9 +35,9 @@ const Modal = ({ isOpen, onClose }) => {
           ×
         </button>
         <h2 className="modal-title">
-          Get UPTO <span className="highlight">40% OFF</span> on
-          <br />
-          your New Resume
+          Get <span className="highlight">UPTO 40% OFF</span> OFF on
+          Professional Resume Writing Services<br/>Upload Your Resume for a Call
+          Back
         </h2>
         <form onSubmit={handleSubmit} className="modal-form">
           <div className="form-row">

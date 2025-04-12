@@ -3,11 +3,11 @@ import { ModalProvider, useModal } from "../../context/ModalContext.jsx";
 import { motion } from "framer-motion";
 import "../../styles.css";
 import {
-  NotificationsActiveRounded,
-  RocketLaunchRounded,
-  WorkOutline,
-  VisibilityRounded,
-  TrendingUpRounded,
+  EmojiPeopleRounded,
+  CampaignRounded,
+  PhoneInTalkRounded,
+  TipsAndUpdatesRounded,
+  ChecklistRounded,
 } from "@mui/icons-material";
 import { useTheme, useMediaQuery } from "@mui/material";
 
@@ -20,35 +20,35 @@ const WhyResumeSection = () => {
   const reasons = [
     {
       icon: (
-        <RocketLaunchRounded
+        <EmojiPeopleRounded style={{ fontSize: isMobile ? "2rem" : "3.5rem" }} />
+      ),
+      title: "Make a Lasting First Impression",
+    },
+    {
+      icon: (
+        <CampaignRounded style={{ fontSize: isMobile ? "2rem" : "3.5rem" }} />
+      ),
+      title: "Get Noticed by Recruiters",
+    },
+    {
+      icon: (
+        <PhoneInTalkRounded style={{ fontSize: isMobile ? "2rem" : "3.5rem" }} />
+      ),
+      title: "Secure Interview Calls",
+    },
+    {
+      icon: (
+        <TipsAndUpdatesRounded
           style={{ fontSize: isMobile ? "2rem" : "3.5rem" }}
         />
       ),
-      title: "Fast-Track YOUR CAREER",
+      title: "Showcase your experience and skills effectively",
     },
     {
       icon: (
-        <NotificationsActiveRounded
-          style={{ fontSize: isMobile ? "2rem" : "3.5rem" }}
-        />
+        <ChecklistRounded style={{ fontSize: isMobile ? "2rem" : "3.5rem" }} />
       ),
-      title: "Get NOTICED Instantly",
-    },
-    {
-      icon: <WorkOutline style={{ fontSize: isMobile ? "2rem" : "3.5rem" }} />,
-      title: "Win More INTERVIEWS",
-    },
-    {
-      icon: (
-        <VisibilityRounded style={{ fontSize: isMobile ? "2rem" : "3.5rem" }} />
-      ),
-      title: "Make a Lasting First IMPRESSION",
-    },
-    {
-      icon: (
-        <TrendingUpRounded style={{ fontSize: isMobile ? "2rem" : "3.5rem" }} />
-      ),
-      title: "Maximize Your OPPORTUNITIES",
+      title: "Increase your chances of landing a job",
     },
   ];
 

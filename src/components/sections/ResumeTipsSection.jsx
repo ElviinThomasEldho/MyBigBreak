@@ -1,152 +1,331 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { useTheme, useMediaQuery } from "@mui/material";
-import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
-import TimelineDot from "@mui/lab/TimelineDot";
-import Typography from "@mui/material/Typography";
-import { useModal } from "../../context/ModalContext";
-
-// Icons
+import React, { useState } from "react";
+import {
+  Typography,
+  Box,
+  Paper,
+  Tooltip,
+  List,
+  ListItem,
+  ListItemText,
+  Card,
+  CardContent,
+  Grid,
+  Container,
+  Divider,
+  Fade,
+  Popper,
+} from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
 import SchoolIcon from "@mui/icons-material/School";
 import StarIcon from "@mui/icons-material/Star";
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import AssessmentIcon from "@mui/icons-material/Assessment";
 import BuildIcon from "@mui/icons-material/Build";
-
-const resumeTips = [
-  {
-    icon: <WorkIcon />,
-    title: "Craft a Strong Professional Summary",
-    description: "Highlight key skills and industry keywords to make a great first impression.",
-  },
-  {
-    icon: <AssessmentIcon />,
-    title: "Showcase Your Impact",
-    description: "Use quantifiable achievements to demonstrate your contributions.",
-  },
-  {
-    icon: <StarIcon />,
-    title: "Certifications & Projects Matter",
-    description: "Highlight relevant certifications, awards, and key projects.",
-  },
-  {
-    icon: <BuildIcon />,
-    title: "Differentiate Skills & Competencies",
-    description: "List both technical skills and behavioral competencies clearly.",
-  },
-  {
-    icon: <TrendingUpIcon />,
-    title: "Make Career Trajectory Clear",
-    description: "Use visual elements to showcase your professional growth.",
-  },
-  {
-    icon: <SchoolIcon />,
-    title: "Focus on Work Experience",
-    description: "Highlight results-driven experiences rather than just job duties.",
-  },
-];
+import PeopleIcon from "@mui/icons-material/People";
+import PersonIcon from "@mui/icons-material/Person";
+import InfoIcon from "@mui/icons-material/Info";
 
 const ResumeTipsSection = () => {
-  const { openModal } = useModal();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [openSection, setOpenSection] = useState(null);
+
+  const handleMouseEnter = (event, sectionId) => {
+    setAnchorEl(event.currentTarget);
+    setOpenSection(sectionId);
+  };
+
+  const handleMouseLeave = () => {
+    setAnchorEl(null);
+    setOpenSection(null);
+  };
+
+  // Resume sections with common mistakes
+  const resumeSections = [
+    {
+      id: "summary",
+      title: "Professional Summary",
+      icon: <PersonIcon color="primary" />,
+      content: (
+        <Typography variant="body1">
+          I am a hard-working individual who likes working with people and has
+          good communication skills. I have 8+ years of experience in digital
+          marketing.
+        </Typography>
+      ),
+      tip: {
+        title: "Professional Summary Needs Improvement",
+        text: "Your summary is too generic. Include your unique value proposition and specific marketing specialties. Avoid clichés like 'hard-working' and focus on your unique contributions.",
+      },
+    },
+    {
+      id: "experience",
+      title: "Work Experience",
+      icon: <WorkIcon color="primary" />,
+      content: (
+        <>
+          <Box mb={2}>
+            <Typography variant="subtitle1" fontWeight="bold">
+              Digital Marketing Lead @ KVB Digital Marketing Co. (2017 - 2019)
+            </Typography>
+            <Typography variant="body2">
+              Responsible for digital marketing campaigns and working with
+              clients.
+            </Typography>
+          </Box>
+          <Box>
+            <Typography variant="subtitle1" fontWeight="bold">
+              Junior Digital Marketer @ Crewe Digital Marketing (2011 - 2017)
+            </Typography>
+            <Typography variant="body2">
+              Handled various marketing tasks and assisted senior team members.
+            </Typography>
+          </Box>
+        </>
+      ),
+      tip: {
+        title: "Experience Needs Quantifiable Results",
+        text: "Your role descriptions are vague. Add specific metrics like '200% increase in client engagement' or 'Managed $50K ad budget' to show the impact of your work.",
+      },
+    },
+    {
+      id: "education",
+      title: "Education",
+      icon: <SchoolIcon color="primary" />,
+      content: (
+        <>
+          <Box mb={2}>
+            <Typography variant="subtitle1" fontWeight="bold">
+              Digital Marketing Certificate - Norgen Media College
+            </Typography>
+            <Typography variant="body2">Graduated 2011</Typography>
+          </Box>
+          <Box>
+            <Typography variant="subtitle1" fontWeight="bold">
+              BA in Marketing Communications - Norgen City University
+            </Typography>
+            <Typography variant="body2">Graduated 2009</Typography>
+          </Box>
+        </>
+      ),
+      tip: {
+        title: "Education Details Missing",
+        text: "Include your academic achievements like GPA (if above 3.0), honors, relevant coursework, and leadership positions to showcase your academic strengths.",
+      },
+    },
+    {
+      id: "skills",
+      title: "Skills & Expertise",
+      icon: <BuildIcon color="primary" />,
+      content: (
+        <List dense disablePadding>
+          <ListItem disableGutters>
+            <ListItemText primary="Social media" />
+          </ListItem>
+          <ListItem disableGutters>
+            <ListItemText primary="Good with computers" />
+          </ListItem>
+          <ListItem disableGutters>
+            <ListItemText primary="Marketing" />
+          </ListItem>
+          <ListItem disableGutters>
+            <ListItemText primary="Communication" />
+          </ListItem>
+        </List>
+      ),
+      tip: {
+        title: "Skills Need Specificity",
+        text: "Your skills are too general. Separate technical skills (e.g., 'Google Analytics,' 'HubSpot CRM') from soft skills and use industry-specific terminology to show expertise.",
+      },
+    },
+    {
+      id: "certifications",
+      title: "Certifications",
+      icon: <StarIcon color="primary" />,
+      content: (
+        <Typography variant="body2" color="text.secondary" fontStyle="italic">
+          No certifications listed
+        </Typography>
+      ),
+      tip: {
+        title: "Missing Professional Certifications",
+        text: "Add relevant certifications like Google Analytics, HubSpot Inbound Marketing, or Facebook Blueprint to demonstrate your commitment to professional development.",
+      },
+    },
+    {
+      id: "references",
+      title: "References",
+      icon: <PeopleIcon color="primary" />,
+      content: (
+        <Typography variant="body2">
+          References available upon request
+        </Typography>
+      ),
+      tip: {
+        title: "References Strategy",
+        text: "Instead of 'References available upon request,' either list 2-3 professional references with their contact information or remove this section entirely to save space.",
+      },
+    },
+  ];
+
+  const currentTip = resumeSections.find(
+    (section) => section.id === openSection
+  )?.tip;
 
   return (
-    <motion.section
-      className="resume-tips-container"
-      style={{
-        paddingInline: "1rem",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      <motion.h2
-        className="resume-tips-title"
-        style={{ textAlign: "center", marginBottom: "2rem" }}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-      >
-        Your Resume Upgrade Journey
-      </motion.h2>
+    <Container maxWidth="md" sx={{ py: 10 }}>
+      <Box mb={4} textAlign="center">
+        <Typography variant="h4" gutterBottom>
+          How to improve your resume?
+        </Typography>
+        {/* <Typography variant="h6" gutterBottom color="text.secondary">
+          Here are a few tips
+        </Typography> */}
+        <Typography variant="body2" color="primary">
+          Hover over resume sections to see improvement tips
+        </Typography>
+      </Box>
 
-      <Timeline
-        position={isMobile ? "right" : "alternate"}
-        style={{ width: isMobile ? "100%" : "65%" }}
-      >
-        {resumeTips.map((tip, index) => (
-          <TimelineItem key={index}>
-            <TimelineOppositeContent
-              sx={{
-                m: "auto 0",
-                fontSize: "16px",
-                fontWeight: "bold",
-                textTransform: "uppercase",
-                display: isMobile ? "none" : "block",
-              }}
-              align={index % 2 === 0 ? "right" : "left"}
-              variant="body2"
-              color="text.secondary"
-              fontFamily={"DM Sans"}
-            >
-              {/* Step {index + 1} */}
-            </TimelineOppositeContent>
-
-            <TimelineSeparator>
-              <TimelineConnector />
-              <TimelineDot color="primary">{tip.icon}</TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-
-            <TimelineContent sx={{ py: "12px", px: 2 }}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Typography variant="h6" component="span">
-                  {tip.title}
-                </Typography>
-                <Typography fontFamily={"DM Sans"}>
-                  {tip.description}
-                </Typography>
-              </motion.div>
-            </TimelineContent>
-          </TimelineItem>
-        ))}
-      </Timeline>
-
-      <motion.div
-        style={{ textAlign: "center", marginTop: "2rem" }}
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-      >
-        <motion.button
-          className="cta-button"
-          onClick={openModal}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+      <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+        <Grid
+          container
+          spacing={4}
+          justifyContent="center"
+          sx={{ flexWrap: "nowrap" }}
         >
-          Improve your Resume Now!
-          <p className="offer-subtext">Get UPTO 40% OFF on your New Resume</p>
-        </motion.button>
-      </motion.div>
-    </motion.section>
+          {/* Left Column */}
+          <Grid item xs={12} md={3} sx={{maxWidth: "60%"}}>
+            {[0, 1, 2].map((index) => (
+              <Box key={resumeSections[index].id} mb={3}>
+                <Card
+                  variant="outlined"
+                  sx={{
+                    position: "relative",
+                    width: "100%",
+                    minHeight: "150px",
+                    "&:hover": { boxShadow: 3, bgcolor: "rgba(0, 0, 0, 0.02)" },
+                  }}
+                  onMouseEnter={(e) =>
+                    handleMouseEnter(e, resumeSections[index].id)
+                  }
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <CardContent>
+                    <Box display="flex" alignItems="center" mb={2}>
+                      <Box mr={1} display="flex" alignItems="center">
+                        {resumeSections[index].icon}
+                      </Box>
+                      <Typography variant="h6" component="h2">
+                        {resumeSections[index].title}
+                      </Typography>
+                      <Tooltip
+                        title="Hover for improvement tips"
+                        placement="top"
+                      >
+                        <InfoIcon
+                          color="action"
+                          fontSize="small"
+                          sx={{ ml: 1, opacity: 0.6 }}
+                        />
+                      </Tooltip>
+                    </Box>
+                    <Divider sx={{ mb: 2 }} />
+                    {resumeSections[index].content}
+                  </CardContent>
+                </Card>
+              </Box>
+            ))}
+          </Grid>
+
+          {/* Right Column */}
+          <Grid item xs={12} md={6}>
+            {[3, 4, 5].map((index) => (
+              <Box key={resumeSections[index].id} mb={3}>
+                <Card
+                  variant="outlined"
+                  sx={{
+                    position: "relative",
+                    width: "100%",
+                    minHeight: "150px",
+                    "&:hover": { boxShadow: 3, bgcolor: "rgba(0, 0, 0, 0.02)" },
+                  }}
+                  onMouseEnter={(e) =>
+                    handleMouseEnter(e, resumeSections[index].id)
+                  }
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <CardContent>
+                    <Box display="flex" alignItems="center" mb={2}>
+                      <Box mr={1} display="flex" alignItems="center">
+                        {resumeSections[index].icon}
+                      </Box>
+                      <Typography variant="h6" component="h2">
+                        {resumeSections[index].title}
+                      </Typography>
+                      <Tooltip
+                        title="Hover for improvement tips"
+                        placement="top"
+                      >
+                        <InfoIcon
+                          color="action"
+                          fontSize="small"
+                          sx={{ ml: 1, opacity: 0.6 }}
+                        />
+                      </Tooltip>
+                    </Box>
+                    <Divider sx={{ mb: 2 }} />
+                    {resumeSections[index].content}
+                  </CardContent>
+                </Card>
+              </Box>
+            ))}
+          </Grid>
+        </Grid>
+      </Paper>
+
+      <Popper
+        open={Boolean(anchorEl)}
+        anchorEl={anchorEl}
+        placement="top"
+        transition
+        modifiers={[
+          {
+            name: "offset",
+            options: {
+              offset: [0, -10],
+            },
+          },
+        ]}
+      >
+        {({ TransitionProps }) => (
+          <Fade {...TransitionProps} timeout={350}>
+            <Paper
+              elevation={3}
+              sx={{
+                p: 2,
+                maxWidth: 300,
+                bgcolor: "warning.light",
+                color: "black",
+                border: "1px solid",
+                borderColor: "warning.main",
+              }}
+            >
+              {currentTip && (
+                <>
+                  <Typography variant="subtitle1" fontWeight="bold" color="white" lineHeight={1} mb={1}>
+                    {currentTip.title}
+                  </Typography>
+                  <Typography variant="body2">{currentTip.text}</Typography>
+                </>
+              )}
+            </Paper>
+          </Fade>
+        )}
+      </Popper>
+
+      {/* <Box mt={4} textAlign="center">
+        <Typography variant="caption" color="text.secondary">
+          Interactive resume template with live improvement feedback
+        </Typography>
+      </Box> */}
+    </Container>
   );
 };
 
