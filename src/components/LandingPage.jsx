@@ -12,6 +12,7 @@ import BlockCTA from "./BlockCTA";
 import { ModalProvider } from "../context/ModalContext.jsx";
 import "../styles.css";
 import SamplesSection from "./sections/SamplesSection.jsx";
+import ResumeHighlights from "./sections/ResumeHighlights.jsx";
 
 const LandingPage = () => {
   return (
@@ -27,9 +28,13 @@ const LandingPage = () => {
         <section id="resume-tips">
           <ResumeTipsSection />
         </section>
-        <section id="samples">
+        {/* <section id="samples">
           <SamplesSection />
+        </section> */}
+        <section id="higlights">
+          <ResumeHighlights />
         </section>
+
         <section id="how-it-works">
           <HowItWorksSection />
         </section>

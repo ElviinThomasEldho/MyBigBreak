@@ -607,6 +607,23 @@ button {
   text-align: center;
 }
 
+.sub-text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: var(--spacing-sm);
+}
+
+.tagline {
+  font-family: "DM Serif Text";
+  font-size: 2rem;
+}
+
+.benefits-list {
+  text-align: left;
+  padding-left: 20px;
+}
+
 /* Testimonials Section */
 .section-container {
   padding: var(--spacing-3xl) var(--spacing-lg);
@@ -1294,25 +1311,229 @@ button {
 
 
 /* Common Mistakes Section */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes strokeAnimation {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 .resume-tips-container {
-  padding: 100px 0;
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 30px;
+  width: 100%;
+  padding: 48px 32px;
+  background-color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.resume-tips-container.loaded {
+  opacity: 1;
+}
+
+.section-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .resume-tips-title {
-  color: #00205b;
+  font-size: 32px;
+  font-weight: 700;
+  color: #102466;
+  margin-bottom: 15px;
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
 }
 
-.resume-tips-container .cta-button {
+.title-underline {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, #FF8842, #FFA76A);
   margin: 0 auto;
-  margin-top: 30px;
+  border-radius: 2px;
+  animation: scaleIn 1s ease forwards;
+}
+
+.resume-tips-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: start;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.resume-tip-card {
+  border: 2px solid transparent;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  opacity: 1;
+  transform: translateY(20px);
+  overflow: hidden;
+}
+
+.resume-tip-card.animate-in {
+  animation: fadeIn 0.3s ease forwards;
+  opacity: 1; /* <-- force visible */
+  transform: translateY(0); /* <-- reset position */
+
+}
+
+.resume-tip-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(135deg, #FF8842, #FFA76A);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.resume-tip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.resume-tip-card:hover::before {
+  opacity: 1;
+}
+
+.resume-tip-card.active {
+  border-color: #FF8842;
+  background-color: rgba(255, 136, 66, 0.05);
+}
+
+.tip-header {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.tip-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #102466;
+  margin: 0;
+  position: relative;
+  text-align: center;
+}
+
+.tip-content {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.tip-icon {
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.tip-description {
+  color: #555555;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.tip-additional-info {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.3s ease, margin 0.3s ease;
+  opacity: 0;
+  margin-top: 0;
+  border-top: 0px solid rgba(0, 0, 0, 0.1);
+  padding-top: 0;
+}
+
+.resume-tip-card.active .tip-additional-info {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 12px;
+}
+
+/* Checkmark Animation */
+.checkmark-path {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  transition: all 0.3s ease;
+}
+
+.resume-tip-card:hover .checkmark-path {
+  animation: strokeAnimation 0.6s ease forwards;
+}
+
+.checkmark-bg {
+  transition: all 0.3s ease;
+}
+
+.resume-tip-card:hover .checkmark-bg {
+  fill: #00ba5f;
+}
+
+/* Media Queries for Responsive Design */
+@media (min-width: 768px) {
+  .resume-tips-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .resume-tips-title {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .resume-tips-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  .resume-tips-container {
+    padding: 60px 40px;
+  }
 }
 
 
@@ -2178,4 +2399,89 @@ button {
   font-weight: bold;
   color: black;
   font-size: large;
+}
+
+.resume-highlights.white-bg {
+  background-color: white;
+  color: #102466;
+  padding: 4rem 2rem;
+}
+
+.highlight-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.highlight-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.highlights-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.highlight-item {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  background: #f5f5f5;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.highlight-number {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #ff8842;
+  min-width: 2rem;
+}
+
+.highlight-image {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.highlight-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .highlight-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .highlight-text, .highlight-image {
+    width: 100%;
+    text-align: center;
+  }
+
+  .highlight-item {
+    text-align: left;
+  }
 }

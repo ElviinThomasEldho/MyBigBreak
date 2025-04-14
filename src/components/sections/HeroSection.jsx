@@ -3,7 +3,8 @@ import { useModal } from "../../context/ModalContext.jsx";
 import { motion } from "framer-motion";
 import "../../styles.css";
 
-const services = [
+// Services data moved to a separate constant for better organization
+const SERVICES = [
   {
     img: "/src/img/service1.svg",
     name: "Resume Enhancement",
@@ -21,29 +22,67 @@ const services = [
   },
 ];
 
+// Animation variants for cleaner animation definitions
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const fadeInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0 },
+};
+
+const fadeInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0 },
+};
+
 const HeroSection = () => {
   const { openModal } = useModal();
 
   return (
-    <>
+    <section className="hero-section">
       <div className="hero-container">
         <motion.div
           className="hero-content"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <motion.div
             className="left-container"
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            variants={fadeInLeft}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <h1 className="offer-text">
-              UPTO <span className="discount-text">40% OFF</span> ON
+              UP TO <span className="discount-text">40% OFF</span> ON
               <br />
               <span className="serif">Professional Resume Writing</span>
             </h1>
+            <div className="sub-text">
+              <h4 className="tagline">We Build Resumes that</h4>
+              <ol className="benefits-list">
+                <li>
+                  <strong>Build your success story</strong> to get the
+                  recruiters' attention
+                </li>
+                <li>
+                  Optimize your{" "}
+                  <strong>keywords making your resume ATS compliant</strong>
+                </li>
+                <li>
+                  <strong>Presents your experience summary</strong> with key
+                  skills & competencies
+                </li>
+                <li>
+                  Effectively structures & highlights{" "}
+                  <strong>your Responsibilities & achievements</strong>
+                </li>
+              </ol>
+            </div>
+
             <motion.button
               className="cta-button"
               whileHover={{ scale: 1.05 }}
@@ -56,28 +95,29 @@ const HeroSection = () => {
 
           <motion.div
             className="right-container"
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            variants={fadeInRight}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             <img
               src="/src/img/resumes.png"
               className="hero-image"
-              alt="hero-image"
+              alt="Professional resume samples"
+              loading="eager"
             />
           </motion.div>
         </motion.div>
       </div>
 
       <div className="services-overview">
-        <h4>Our Services</h4>
+        <h4 className="services-title">Our Services</h4>
         <div className="services-container">
-          {services.map((service, index) => (
+          {SERVICES.map((service, index) => (
             <motion.div
               key={index}
               className="service-item"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
               transition={{
                 delay: 0.5 + index * 0.2,
                 duration: 0.5,
@@ -87,15 +127,15 @@ const HeroSection = () => {
               <img
                 className="service-image"
                 src={service.img}
-                alt={service.name}
+                alt={`${service.name} icon`}
               />
-              <p className="service-name">{service.name}</p>
+              <h3 className="service-name">{service.name}</h3>
               <p className="service-desc">{service.desc}</p>
             </motion.div>
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

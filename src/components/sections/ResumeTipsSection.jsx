@@ -1,332 +1,150 @@
-import React, { useState } from "react";
-import {
-  Typography,
-  Box,
-  Paper,
-  Tooltip,
-  List,
-  ListItem,
-  ListItemText,
-  Card,
-  CardContent,
-  Grid,
-  Container,
-  Divider,
-  Fade,
-  Popper,
-} from "@mui/material";
-import WorkIcon from "@mui/icons-material/Work";
-import SchoolIcon from "@mui/icons-material/School";
-import StarIcon from "@mui/icons-material/Star";
-import BuildIcon from "@mui/icons-material/Build";
-import PeopleIcon from "@mui/icons-material/People";
-import PersonIcon from "@mui/icons-material/Person";
-import InfoIcon from "@mui/icons-material/Info";
+import { useState, useEffect } from "react";
+import { useModal } from "../../context/ModalContext";
 
-const ResumeTipsSection = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [openSection, setOpenSection] = useState(null);
+// Enhanced CheckMark SVG Component with animation
+const CheckMark = () => (
+  <svg
+    className="checkmark"
+    xmlns="http://www.w3.org/2000/svg"
+    width="40"
+    height="40"
+    viewBox="0 0 40 40"
+  >
+    <rect
+      className="checkmark-bg"
+      width="40"
+      height="40"
+      rx="6"
+      fill="#00D971"
+    />
+    <path
+      className="checkmark-path"
+      d="M16 20L18.9995 23L24 18"
+      stroke="white"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
-  const handleMouseEnter = (event, sectionId) => {
-    setAnchorEl(event.currentTarget);
-    setOpenSection(sectionId);
-  };
+export default function EnhancedResumeTips() {
+  const { openModal } = useModal();
 
-  const handleMouseLeave = () => {
-    setAnchorEl(null);
-    setOpenSection(null);
-  };
+  const [activeCard, setActiveCard] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  // Resume sections with common mistakes
-  const resumeSections = [
-    {
-      id: "summary",
-      title: "Professional Summary",
-      icon: <PersonIcon color="primary" />,
-      content: (
-        <Typography variant="body1">
-          I am a hard-working individual who likes working with people and has
-          good communication skills. I have 8+ years of experience in digital
-          marketing.
-        </Typography>
-      ),
-      tip: {
-        title: "Professional Summary Needs Improvement",
-        text: "Your summary is too generic. Include your unique value proposition and specific marketing specialties. Avoid clichés like 'hard-working' and focus on your unique contributions.",
+  useEffect(() => {
+    setIsLoaded(true);
+
+    // Initialize animation for cards entering the viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
       },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".resume-tip-card").forEach((card) => {
+      observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const tips = [
+    {
+      title: "Craft a Strong Professional Summary",
+      description:
+        "Highlight key skills and industry keywords to make a great first impression.",
+      icon: <CheckMark />,
+      additionalInfo:
+        "A good summary acts as your 'elevator pitch' and should capture attention in 5-7 seconds.",
     },
     {
-      id: "experience",
-      title: "Work Experience",
-      icon: <WorkIcon color="primary" />,
-      content: (
-        <>
-          <Box mb={2}>
-            <Typography variant="subtitle1" fontWeight="bold">
-              Digital Marketing Lead @ KVB Digital Marketing Co. (2017 - 2019)
-            </Typography>
-            <Typography variant="body2">
-              Responsible for digital marketing campaigns and working with
-              clients.
-            </Typography>
-          </Box>
-          <Box>
-            <Typography variant="subtitle1" fontWeight="bold">
-              Junior Digital Marketer @ Crewe Digital Marketing (2011 - 2017)
-            </Typography>
-            <Typography variant="body2">
-              Handled various marketing tasks and assisted senior team members.
-            </Typography>
-          </Box>
-        </>
-      ),
-      tip: {
-        title: "Experience Needs Quantifiable Results",
-        text: "Your role descriptions are vague. Add specific metrics like '200% increase in client engagement' or 'Managed $50K ad budget' to show the impact of your work.",
-      },
+      title: "Showcase Your Impact",
+      description:
+        "Use quantifiable achievements to demonstrate your contributions.",
+      icon: <CheckMark />,
+      additionalInfo:
+        "Numbers speak louder than words. Include metrics like '45% increase in traffic' or '$100K in sales'.",
     },
     {
-      id: "education",
-      title: "Education",
-      icon: <SchoolIcon color="primary" />,
-      content: (
-        <>
-          <Box mb={2}>
-            <Typography variant="subtitle1" fontWeight="bold">
-              Digital Marketing Certificate - Norgen Media College
-            </Typography>
-            <Typography variant="body2">Graduated 2011</Typography>
-          </Box>
-          <Box>
-            <Typography variant="subtitle1" fontWeight="bold">
-              BA in Marketing Communications - Norgen City University
-            </Typography>
-            <Typography variant="body2">Graduated 2009</Typography>
-          </Box>
-        </>
-      ),
-      tip: {
-        title: "Education Details Missing",
-        text: "Include your academic achievements like GPA (if above 3.0), honors, relevant coursework, and leadership positions to showcase your academic strengths.",
-      },
+      title: "Certifications & Projects Matter",
+      description:
+        "Highlight relevant certifications, awards, and key projects.",
+      icon: <CheckMark />,
+      additionalInfo:
+        "Employers value practical experience. Feature projects that demonstrate your skills in action.",
     },
     {
-      id: "skills",
-      title: "Skills & Expertise",
-      icon: <BuildIcon color="primary" />,
-      content: (
-        <List dense disablePadding>
-          <ListItem disableGutters>
-            <ListItemText primary="Social media" />
-          </ListItem>
-          <ListItem disableGutters>
-            <ListItemText primary="Good with computers" />
-          </ListItem>
-          <ListItem disableGutters>
-            <ListItemText primary="Marketing" />
-          </ListItem>
-          <ListItem disableGutters>
-            <ListItemText primary="Communication" />
-          </ListItem>
-        </List>
-      ),
-      tip: {
-        title: "Skills Need Specificity",
-        text: "Your skills are too general. Separate technical skills (e.g., 'Google Analytics,' 'HubSpot CRM') from soft skills and use industry-specific terminology to show expertise.",
-      },
+      title: "Differentiate Skills & Competencies",
+      description:
+        "List both technical skills and behavioral competencies clearly.",
+      icon: <CheckMark />,
+      additionalInfo:
+        "Organize skills into categories (Technical, Soft Skills, Languages) for better readability.",
     },
     {
-      id: "certifications",
-      title: "Certifications",
-      icon: <StarIcon color="primary" />,
-      content: (
-        <Typography variant="body2" color="text.secondary" fontStyle="italic">
-          No certifications listed
-        </Typography>
-      ),
-      tip: {
-        title: "Missing Professional Certifications",
-        text: "Add relevant certifications like Google Analytics, HubSpot Inbound Marketing, or Facebook Blueprint to demonstrate your commitment to professional development.",
-      },
+      title: "Make Career Trajectory Clear",
+      description: "Use visual elements to showcase your professional growth.",
+      icon: <CheckMark />,
+      additionalInfo:
+        "Use consistent formatting to highlight promotions and career progression within organizations.",
     },
     {
-      id: "references",
-      title: "References",
-      icon: <PeopleIcon color="primary" />,
-      content: (
-        <Typography variant="body2">
-          References available upon request
-        </Typography>
-      ),
-      tip: {
-        title: "References Strategy",
-        text: "Instead of 'References available upon request,' either list 2-3 professional references with their contact information or remove this section entirely to save space.",
-      },
+      title: "Focus on Work Experience",
+      description:
+        "Highlight results-driven experiences rather than just job duties.",
+      icon: <CheckMark />,
+      additionalInfo:
+        "Use action verbs (Achieved, Led, Implemented) to start bullet points for greater impact.",
     },
   ];
 
-  const currentTip = resumeSections.find(
-    (section) => section.id === openSection
-  )?.tip;
+  const handleCardClick = (index) => {
+    setActiveCard(activeCard === index ? null : index);
+  };
 
   return (
-    <Container maxWidth="md" sx={{ py: 10 }}>
-      <Box mb={4} textAlign="center">
-        <Typography variant="h4" gutterBottom>
-          How to improve your resume?
-        </Typography>
-        {/* <Typography variant="h6" gutterBottom color="text.secondary">
-          Here are a few tips
-        </Typography> */}
-        <Typography variant="body2" color="primary">
-          Hover over resume sections to see improvement tips
-        </Typography>
-      </Box>
+    <div className={`resume-tips-container ${isLoaded ? "loaded" : ""}`}>
+      <div className="section-header">
+        <h1 className="resume-tips-title">Essential Resume Tips for Success</h1>
+        <div className="title-underline"></div>
+      </div>
 
-      <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
-        <Grid
-          container
-          spacing={4}
-          justifyContent="center"
-          sx={{ flexWrap: "nowrap" }}
-        >
-          {/* Left Column */}
-          <Grid item xs={12} md={3} sx={{maxWidth: "60%"}}>
-            {[0, 1, 2].map((index) => (
-              <Box key={resumeSections[index].id} mb={3}>
-                <Card
-                  variant="outlined"
-                  sx={{
-                    position: "relative",
-                    width: "100%",
-                    minHeight: "150px",
-                    "&:hover": { boxShadow: 3, bgcolor: "rgba(0, 0, 0, 0.02)" },
-                  }}
-                  onMouseEnter={(e) =>
-                    handleMouseEnter(e, resumeSections[index].id)
-                  }
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <CardContent>
-                    <Box display="flex" alignItems="center" mb={2}>
-                      <Box mr={1} display="flex" alignItems="center">
-                        {resumeSections[index].icon}
-                      </Box>
-                      <Typography variant="h6" component="h2">
-                        {resumeSections[index].title}
-                      </Typography>
-                      <Tooltip
-                        title="Hover for improvement tips"
-                        placement="top"
-                      >
-                        <InfoIcon
-                          color="action"
-                          fontSize="small"
-                          sx={{ ml: 1, opacity: 0.6 }}
-                        />
-                      </Tooltip>
-                    </Box>
-                    <Divider sx={{ mb: 2 }} />
-                    {resumeSections[index].content}
-                  </CardContent>
-                </Card>
-              </Box>
-            ))}
-          </Grid>
+      <div className="resume-tips-grid">
+        {tips.map((tip, index) => (
+          <div
+            key={index}
+            className={`resume-tip-card ${
+              activeCard === index ? "active" : ""
+            }`}
+            onClick={() => handleCardClick(index)}
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <div className="tip-header">
+              <h2 className="tip-title">{tip.title}</h2>
+            </div>
+            <div className="tip-content">
+              <div className="tip-icon">{tip.icon}</div>
+              <p className="tip-description">{tip.description}</p>
+            </div>
+            <div className="tip-additional-info">
+              <p>{tip.additionalInfo}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
-          {/* Right Column */}
-          <Grid item xs={12} md={6}>
-            {[3, 4, 5].map((index) => (
-              <Box key={resumeSections[index].id} mb={3}>
-                <Card
-                  variant="outlined"
-                  sx={{
-                    position: "relative",
-                    width: "100%",
-                    minHeight: "150px",
-                    "&:hover": { boxShadow: 3, bgcolor: "rgba(0, 0, 0, 0.02)" },
-                  }}
-                  onMouseEnter={(e) =>
-                    handleMouseEnter(e, resumeSections[index].id)
-                  }
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <CardContent>
-                    <Box display="flex" alignItems="center" mb={2}>
-                      <Box mr={1} display="flex" alignItems="center">
-                        {resumeSections[index].icon}
-                      </Box>
-                      <Typography variant="h6" component="h2">
-                        {resumeSections[index].title}
-                      </Typography>
-                      <Tooltip
-                        title="Hover for improvement tips"
-                        placement="top"
-                      >
-                        <InfoIcon
-                          color="action"
-                          fontSize="small"
-                          sx={{ ml: 1, opacity: 0.6 }}
-                        />
-                      </Tooltip>
-                    </Box>
-                    <Divider sx={{ mb: 2 }} />
-                    {resumeSections[index].content}
-                  </CardContent>
-                </Card>
-              </Box>
-            ))}
-          </Grid>
-        </Grid>
-      </Paper>
-
-      <Popper
-        open={Boolean(anchorEl)}
-        anchorEl={anchorEl}
-        placement="top"
-        transition
-        modifiers={[
-          {
-            name: "offset",
-            options: {
-              offset: [0, -10],
-            },
-          },
-        ]}
-      >
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={350}>
-            <Paper
-              elevation={3}
-              sx={{
-                p: 2,
-                maxWidth: 300,
-                bgcolor: "warning.light",
-                color: "black",
-                border: "1px solid",
-                borderColor: "warning.main",
-              }}
-            >
-              {currentTip && (
-                <>
-                  <Typography variant="subtitle1" fontWeight="bold" color="white" lineHeight={1} mb={1}>
-                    {currentTip.title}
-                  </Typography>
-                  <Typography variant="body2">{currentTip.text}</Typography>
-                </>
-              )}
-            </Paper>
-          </Fade>
-        )}
-      </Popper>
-
-      {/* <Box mt={4} textAlign="center">
-        <Typography variant="caption" color="text.secondary">
-          Interactive resume template with live improvement feedback
-        </Typography>
-      </Box> */}
-    </Container>
+      <button className="cta-button pulse" onClick={openModal}>
+        Improve your Resume Now!
+        <span className="button-arrow">→</span>
+      </button>
+    </div>
   );
-};
-
-export default ResumeTipsSection;
+}
