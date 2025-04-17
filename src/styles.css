@@ -1613,7 +1613,7 @@ button {
   }
 
   .offer-text {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-3xl);
     text-align: left;
     margin-top: var(--spacing-lg);
     position: relative;
@@ -2452,7 +2452,7 @@ button {
   line-height: 1;
   padding: 0.4rem;
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: 1rem;
   text-align: left;
 }
