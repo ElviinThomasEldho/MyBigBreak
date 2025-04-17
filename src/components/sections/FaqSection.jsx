@@ -68,6 +68,7 @@ const FaqSection = () => {
           <motion.div
             key={faqId}
             className="faq-item"
+            layout
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -84,6 +85,7 @@ const FaqSection = () => {
                 <motion.div
                   className="faq-answer open"
                   key="answer"
+                  layout
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
