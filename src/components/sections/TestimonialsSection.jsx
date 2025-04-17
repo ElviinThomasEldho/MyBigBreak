@@ -64,28 +64,32 @@ const testimonials = [
   {
     author: "Sabin",
     role: "Sales & Marketing, Dubai, UAE",
-    quote: "Thank you for the amazing work you guys have done to enhance my CV. I must admit the whole transition from contacting the My Big Break team and executing the entire process was so smooth. The simple and engaging approach taken by the team is credible. I had always hesitated to contact a CV building firm. But I made the right decision by getting in touch with My Big Break. I will definitely refer you guys to all those who are seeking a professional CV and profile. Excellent job team",
+    quote:
+      "Thank you for the amazing work you guys have done to enhance my CV. I must admit the whole transition from contacting the My Big Break team and executing the entire process was so smooth. The simple and engaging approach taken by the team is credible. I had always hesitated to contact a CV building firm. But I made the right decision by getting in touch with My Big Break. I will definitely refer you guys to all those who are seeking a professional CV and profile. Excellent job team",
     rating: 5,
     isGoogleReview: false,
   },
   {
     author: "FJ",
     role: "Accounts and Finance, United Kingdom",
-    quote: "Extremely happy to say that post getting my resume done from you, I started applying with the same. I got a call within a week and I was able to crack the interview too. Not sure whether it was a coincidence but am really happy about the coincidence and thankful to all of you for the support. May you guys keep doing a wonderful job and keep changing lives, particularly in this difficult time for the whole world.",
+    quote:
+      "Extremely happy to say that post getting my resume done from you, I started applying with the same. I got a call within a week and I was able to crack the interview too. Not sure whether it was a coincidence but am really happy about the coincidence and thankful to all of you for the support. May you guys keep doing a wonderful job and keep changing lives, particularly in this difficult time for the whole world.",
     rating: 5,
     isGoogleReview: false,
   },
   {
     author: "Abhishek",
     role: "Banking Services, Hyderabad",
-    quote: "Congratulations for the great work. I'm happy with the services and the final output. Instead of directly availing the services, I approached and asked for a call back to understand the way forward. We had a detailed discussion and all the questions were answered patiently. Secondly, there was no push for making payment. I am happy with final outcome. And also happy with getting associated with “MyBigbreak”.",
+    quote:
+      "Congratulations for the great work. I'm happy with the services and the final output. Instead of directly availing the services, I approached and asked for a call back to understand the way forward. We had a detailed discussion and all the questions were answered patiently. Secondly, there was no push for making payment. I am happy with final outcome. And also happy with getting associated with “MyBigbreak”.",
     rating: 5,
     isGoogleReview: false,
   },
   {
     author: "R. Kaarthik",
     role: "Healthcare, Chennai",
-    quote: "Dear My Big Break Team, I am so fortunate to have associated with you and take your services. Your team is just fantastic, choice of words, patience to listen about my roles and responsibilities in my current and previous roles and ability to understand and put them in the form of words just eased my thoughts about my resume and made me more confident. Kudos to Team- My Big Break.",
+    quote:
+      "Dear My Big Break Team, I am so fortunate to have associated with you and take your services. Your team is just fantastic, choice of words, patience to listen about my roles and responsibilities in my current and previous roles and ability to understand and put them in the form of words just eased my thoughts about my resume and made me more confident. Kudos to Team- My Big Break.",
     rating: 5,
     isGoogleReview: false,
   },
@@ -148,9 +152,8 @@ const TestimonialsSection = () => {
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        550+ 5 Star Reviews - Google 
+        550+ ★★★★★ {" "} <i className="fab fa-google" /> Reviews
       </motion.h3>
-
 
       <div className="testimonials-carousel">
         <Slider {...settings}>
@@ -198,9 +201,7 @@ const TestimonialsSection = () => {
                     )}
                   </p>
                   <div className="author">
-                    <div className="avatar">
-                      {testimonial.author.charAt(0)}
-                    </div>
+                    <div className="avatar">{testimonial.author.charAt(0)}</div>
                     <div className="author-info">
                       <h4>{testimonial.author}</h4>
                       <p>{testimonial.role}</p>

@@ -23,8 +23,8 @@ const SERVICES = [
 ];
 
 const highlights = [
-  "Build your <strong>success story</strong> to get the <strong>recruiters attention</strong>.",
-  "<strong>Optimises your Keywords</strong> and making your Resume <strong>ATS Compliant</strong>.",
+  "Build your <strong>success story</strong> to get the <strong>recruiters' attention</strong>.",
+  "<strong>Optimises your Keywords</strong> and making your Resume <strong>ATS-Compliant</strong>.",
   "Presents your <strong>experience summary</strong> with <strong>key skills & competencies</strong>.",
   "Effectively <strong>structures & highlights</strong> your <strong>Responsibilities & achievements</strong>.",
 ];

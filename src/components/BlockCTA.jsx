@@ -52,17 +52,18 @@ const BlockCTA = () => {
   return (
     <>
       <style>{cursorStyles}</style>
-      <div 
+      {/* <div 
         className="custom-cursor-container"
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-      >
+      > */}
         <div className="block-cta-container" onClick={openModal}>
           <p className="action-text">Transform your resume now</p>
           <p className="offer-subtext">Get UPTO 40% OFF on your New Resume</p>
+          <p>CLICK HERE to grab the offer NOW!</p>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 };

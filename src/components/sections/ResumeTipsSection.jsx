@@ -137,6 +137,9 @@ export default function EnhancedResumeTips() {
             <div className="tip-additional-info">
               <p>{tip.additionalInfo}</p>
             </div>
+            <div className="click-for-details">
+              {activeCard === index ? "Click to collapse" : "Click for more details"}
+            </div>
           </div>
         ))}
       </div>
