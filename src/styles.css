@@ -56,7 +56,7 @@ html {
   }
 
   .offer-text {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-xl);
     margin: var(--spacing-lg) 0;
     text-align: center;
   }
@@ -133,7 +133,7 @@ html {
   }
 
   .offer-text {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
   }
 
   .services-overview {
@@ -1611,7 +1611,7 @@ button {
   }
 
   .offer-text {
-    font-size: 2.5rem;
+    font-size: var(--font-size-2xl);
     text-align: center;
     margin-top: var(--spacing-lg);
     position: relative;
@@ -1642,6 +1642,7 @@ button {
   .service-item .service-desc {
     font-size: 0.7rem;
     line-height: 1;
+    display: none;
   }
 
   .logo-image {
@@ -2487,22 +2488,24 @@ button {
   }
 
   .highlights-title {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
+    margin-bottom: 0;
   }
 
   .highlight-text, .highlight-image {
     width: 100%;
     text-align: center;
     background: #f5f5f540;
+
   }
 
   .highlight-item {
     text-align: left;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
   }
 
   .highlight-image {
-    /* display: none; */
+    display: none;
     height: 100vh;
     align-items: end;
   }
