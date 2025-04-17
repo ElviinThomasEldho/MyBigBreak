@@ -1582,7 +1582,7 @@ button {
     padding: var(--spacing-md) 0;
     padding-left: 0;
     padding-bottom: var(--spacing-3xl);
-    align-items: start;
+    align-items: center;
     text-align: left;
     position: relative;
     z-index: 3;
@@ -1590,7 +1590,7 @@ button {
     background: radial-gradient(
       circle at center,
       rgba(255, 255, 255, 0.95) 0%,
-      rgba(255, 255, 255, 0.85) 100%
+      rgba(255, 255, 255, 0.85) 50%
     );
   }
 
@@ -2512,13 +2512,16 @@ button {
 
   .highlight-image {
     /* display: none; */
+    position: relative;
     height: 100vh;
     align-items: end;
   }
 
   .highlight-image img {
     /* height: 100vh; */
+    position: absolute;
     width: 100%;
     max-width: 100vw;
+    transform: translateX("50%");
   }
 }
