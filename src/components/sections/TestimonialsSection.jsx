@@ -182,7 +182,7 @@ const TestimonialsSection = () => {
                     </div>
                     {testimonial.isGoogleReview && (
                       <p className="google-review">
-                        <i className="fab fa-google" /> Google Review
+                        <i className="fab fa-google" /> Review
                       </p>
                     )}
                   </div>
