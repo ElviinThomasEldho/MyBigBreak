@@ -31,9 +31,9 @@ const LandingPage = () => {
         {/* <section id="samples">
           <SamplesSection />
         </section> */}
-        <section id="higlights">
+        {/* <section id="higlights">
           <ResumeHighlights />
-        </section>
+        </section> */}
 
         <section id="how-it-works">
           <HowItWorksSection />
