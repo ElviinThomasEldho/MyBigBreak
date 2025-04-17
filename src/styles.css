@@ -1583,7 +1583,7 @@ button {
     padding: var(--spacing-md) 0;
     padding-left: 0;
     padding-bottom: var(--spacing-3xl);
-    align-items: start;
+    align-items: center;
     text-align: left;
     position: relative;
     z-index: 3;
@@ -1674,7 +1674,7 @@ button {
   .why-resume-container {
     width: 100vw;
     min-height: fit-content;
-    padding-block: var(--spacing-2xl) var(--spacing-lg);
+    padding-block: var(--spacing-2xl);
   }
 
   .why-resume-title {
@@ -1691,6 +1691,7 @@ button {
     gap: 0px;
     padding: 0;
     margin: 0;
+    margin-bottom: 3rem;
     width: 100%;
     padding-inline: 45px
   }
