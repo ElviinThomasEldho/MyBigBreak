@@ -1216,7 +1216,7 @@ button {
 
 /* How It Works Section */
 .how-it-works-container {
-  background: linear-gradient(to bottom right, #ff9b59, #ffae00);
+  background: linear-gradient(to bottom right, #ff6600, #ffae00);
   padding: var(--spacing-3xl) var(--spacing-lg);
   padding-bottom: var(--spacing-lg);
   color: black;

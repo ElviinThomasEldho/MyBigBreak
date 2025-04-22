@@ -28,9 +28,9 @@ const LandingPage = () => {
         <section id="resume-tips">
           <ResumeTipsSection />
         </section>
-        {/* <section id="samples">
+        <section id="samples">
           <SamplesSection />
-        </section> */}
+        </section>
         {/* <section id="higlights">
           <ResumeHighlights />
         </section> */}
