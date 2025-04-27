@@ -28,15 +28,15 @@ const LandingPage = () => {
         <section id="resume-tips">
           <ResumeTipsSection />
         </section>
-        <section id="samples">
-          <SamplesSection />
-        </section>
         {/* <section id="higlights">
           <ResumeHighlights />
         </section> */}
 
         <section id="how-it-works">
           <HowItWorksSection />
+        </section>
+        <section id="samples">
+          <SamplesSection />
         </section>
         <section id="testimonials">
           <TestimonialsSection />
