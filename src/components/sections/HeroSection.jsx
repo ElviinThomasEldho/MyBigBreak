@@ -24,9 +24,9 @@ const SERVICES = [
 
 const highlights = [
   "Build your <strong>success story</strong> to get the <strong>recruiters' attention</strong>.",
-  "<strong>Optimise your Keywords</strong> and making your Resume <strong>ATS-Compliant</strong>.",
-  "Presents your <strong>experience summary</strong> with <strong>key skills & competencies</strong>.",
-  "Effectively <strong>structure & highlight</strong> your <strong>Responsibilities & achievements</strong>.",
+  "<strong>Optimise your Keywords</strong> and make your Resume <strong>ATS-Compliant</strong>.",
+  "Present your <strong>experience summary</strong> with <strong>key skills & competencies</strong>.",
+  "Effectively <strong>structure & highlight</strong> your <strong>Responsibilities & Achievements</strong>.",
 ];
 
 // Animation variants for cleaner animation definitions
