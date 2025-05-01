@@ -4,10 +4,10 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "set NODE_OPTIONS=--max-old-space-size=512 && vite",
+    "build": "set NODE_OPTIONS=--max-old-space-size=512 && vite build",
+    "lint": "set NODE_OPTIONS=--max-old-space-size=512 && eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "set NODE_OPTIONS=--max-old-space-size=512 && vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
