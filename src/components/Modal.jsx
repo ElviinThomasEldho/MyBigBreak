@@ -31,7 +31,7 @@ const Modal = ({ isOpen, onClose }) => {
     try {
       // Create form data for email
       const templateParams = {
-        to_email: "resume@mybigbreak.in",
+        to_email: "elviin.t.eldho@gmail.com",
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone,
@@ -49,7 +49,7 @@ const Modal = ({ isOpen, onClose }) => {
           const fileName = selectedFile.name;
           
           await emailjs.send(
-            "service_wmcml7v",
+            "service_dtlwy8f",
             "template_ag4ybq8",
             {
               ...templateParams,
@@ -69,7 +69,7 @@ const Modal = ({ isOpen, onClose }) => {
       } else {
         // Send email without attachment
         await emailjs.send(
-          "service_wmcml7v",
+          "service_dtlwy8f",
           "template_ag4ybq8",
           templateParams,
           "WJtCNy6AFtWaQHk0N"
